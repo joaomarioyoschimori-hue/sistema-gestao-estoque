@@ -54,7 +54,7 @@ O projeto tem como objetivo aplicar conceitos de programação orientada a objet
 Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git git clone https://github.com/joaomarioyoschimori-hue/sistema-gestao-estoque.git
 ```
 
 Entre na pasta do projeto:
