@@ -63,6 +63,7 @@ def main():
         print("================================")
         print("1 - Cadastrar produto")
         print("2 - Listar produtos")
+        print("3 - Movimentar estoque")
         print("0 - Sair")
 
         option = input("\nEscolha uma opção: ")
@@ -73,6 +74,9 @@ def main():
         elif option == "2":
             list_products()
 
+        elif option == "3":
+            stock_movement()           
+
         elif option == "0":
             print("\nEncerrando o sistema...")
             break
@@ -80,7 +84,49 @@ def main():
         else:
             print("\nOpção inválida!")
 
+def stock_movement():
+    code = input("\nDigite o código do produto: ")
+
+    product = None
+
+    for item in products:
+        if item.code == code:
+            product = item
+            break
+
+    if product is None:
+        print("Produto não encontrado.")
+        return
+
+    print(f"\nProduto: {product.name}")
+    print(f"Estoque atual: {product.quantity}")
+
+    print("\n1 - Entrada de estoque")
+    print("2 - Saída de estoque")
+
+    option = input("Escolha uma operação: ")
+
+    try:
+        amount = int(input("Quantidade: "))
+
+        if option == "1":
+            product.add_stock(amount)
+            print("Entrada registrada com sucesso!")
+
+        elif option == "2":
+            product.remove_stock(amount)
+            print("Saída registrada com sucesso!")
+
+        else:
+            print("Operação inválida.")
+            return
+
+        print(f"Estoque atualizado: {product.quantity}")
+
+    except ValueError as error:
+        print(f"Erro: {error}")
 
 if __name__ == "__main__":
+    
     main()
     
